@@ -1,0 +1,27 @@
+<html>
+<title>iPhone Backup Viewer for SMS with Contacts</title>
+
+<body>
+
+<% count = 0 %>
+<table border="1">
+	% for k, v in groups.items():
+		<tr><td colspan="2" align="center"><strong>${contacts.get(k, k)}</strong></td></tr>
+		% for message in v:
+		<% count += 1 %>
+		<% date, text, flags = message %>
+		% if flags == 3:
+			<tr><td width="50%"></td><td width="50%">${date}</td></tr>
+			<tr><td width="50%"></td><td width="50%">${text}</td></tr>
+		% else:
+			<tr><td width="50%">${date}</td><td width="50%"></td></tr>
+			<tr><td width="50%">${text}</td><td width="50%"></td></tr>
+		% endif
+		% endfor
+	% endfor
+</table>
+
+<h3>total: ${count} records</h3>
+</body>
+</html>
+
